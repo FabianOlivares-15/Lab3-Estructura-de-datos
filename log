@@ -116,3 +116,33 @@ hashmap.c:153:10: error: variable ‘oldBuckets’ set but not used [-Werror=unu
       |          ^~~~~~~~~~
 cc1: all warnings being treated as errors
 6e24d33
+Fri Apr 17 03:20:57 AM UTC 2026: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:153:24: error: initialization of ‘Pair *’ from incompatible pointer type ‘Pair **’ [-Wincompatible-pointer-types]
+  153 |     Pair *oldBuckets = map->buckets;
+      |                        ^~~
+hashmap.c:159:26: error: invalid operands to binary != (have ‘Pair’ and ‘void *’)
+  159 |         if(oldBuckets[i] != NULL){
+      |            ~~~~~~~~~~~~~ ^~
+      |                      |
+      |                      Pair
+hashmap.c:160:41: error: invalid type argument of ‘->’ (have ‘Pair’)
+  160 |             insertMap(map, oldBuckets[i]->key, oldBuckets[i]->value);
+      |                                         ^~
+hashmap.c:160:61: error: invalid type argument of ‘->’ (have ‘Pair’)
+  160 |             insertMap(map, oldBuckets[i]->key, oldBuckets[i]->value);
+      |                                                             ^~
+hashmap.c:161:28: error: incompatible type for argument 1 of ‘free’
+  161 |             free(oldBuckets[i]);
+      |                  ~~~~~~~~~~^~~
+      |                            |
+      |                            Pair
+In file included from test.c:2:
+/nix/store/41pf3md9zgpda9kwh6rzn5kaddf7i0lp-glibc-2.40-66-dev/include/stdlib.h:687:25: note: expected ‘void *’ but argument is of type ‘Pair’
+  687 | extern void free (void *__ptr) __THROW;
+      |                   ~~~~~~^~~~~
+9c5b282
