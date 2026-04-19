@@ -103,6 +103,7 @@ Pair * searchMap(HashMap * map,  char * key) {
 // Recuerde actualizar la variable size.
 
 void eraseMap(HashMap * map,  char * key) {
+    if(map == NULL) return NULL;
     long pos = hash(key, map->capacity);
     while(map->buckets[pos] != NULL){
         if(is_equal(key, map->buckets[pos]->key)){
@@ -119,6 +120,7 @@ void eraseMap(HashMap * map,  char * key) {
 // Recuerde actualizar el índice.
 
 Pair * firstMap(HashMap * map) {
+    if(map == NULL) return NULL;
     for(long i = 0; i < map->capacity; i++){
         if(map->buckets[i] != NULL && map->buckets[i]->key != NULL){
             map->current = i;
@@ -129,6 +131,7 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
+    if(map == NULL) return NULL;
     for(long i = map->current + 1; i < map->capacity; i++){
         if(map->buckets[i] != NULL && map->buckets[i]->key != NULL){
             map->current = i;
@@ -152,6 +155,7 @@ Pair * nextMap(HashMap * map) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
+    if(map == NULL) return NULL;
     Pair **oldBuckets = map->buckets;
     long oldCapacity = map->capacity;
     map->capacity *= 2;

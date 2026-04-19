@@ -183,3 +183,23 @@ Sun Apr 19 10:08:01 PM UTC 2026:
  tests:  17|0
 total_score: 60/60
 fedb014
+Sun Apr 19 10:10:03 PM UTC 2026: 
+ hashmap.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+Compilation failed
+In file included from test.c:5:
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:106:28: error: ‘return’ with a value, in function returning void [-Wreturn-mismatch]
+  106 |     if(map == NULL) return NULL;
+      |                            ^~~~
+hashmap.c:105:6: note: declared here
+  105 | void eraseMap(HashMap * map,  char * key) {
+      |      ^~~~~~~~
+hashmap.c: In function ‘enlarge’:
+hashmap.c:158:28: error: ‘return’ with a value, in function returning void [-Wreturn-mismatch]
+  158 |     if(map == NULL) return NULL;
+      |                            ^~~~
+hashmap.c:156:6: note: declared here
+  156 | void enlarge(HashMap * map) {
+      |      ^~~~~~~
+5f1369c
