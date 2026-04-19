@@ -103,7 +103,7 @@ Pair * searchMap(HashMap * map,  char * key) {
 // Recuerde actualizar la variable size.
 
 void eraseMap(HashMap * map,  char * key) {
-    if(map == NULL) return NULL;
+    if(map == NULL) return;
     long pos = hash(key, map->capacity);
     while(map->buckets[pos] != NULL){
         if(is_equal(key, map->buckets[pos]->key)){
@@ -155,7 +155,7 @@ Pair * nextMap(HashMap * map) {
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
-    if(map == NULL) return NULL;
+    if(map == NULL) return;
     Pair **oldBuckets = map->buckets;
     long oldCapacity = map->capacity;
     map->capacity *= 2;
